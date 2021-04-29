@@ -7,7 +7,7 @@ namespace Aero_hockey.Game
     {
         public Vector2f position;
         public Action Destroy;
-        protected Shape shape;
+        public Shape shape;
         public GameObject(Scene scene, Shape drawable)
         {
             shape = drawable;
@@ -35,6 +35,13 @@ namespace Aero_hockey.Game
             shape.Position = position;
             OnUpdate();
         }
+        public void Collide(GameObject gameObject)
+        {
+            if (shape.GetGlobalBounds().Intersects(gameObject.shape.GetGlobalBounds()))
+            {
+                OnCollisionWith(gameObject);
+            }
+        }
         public virtual void OnDestroy()
         {
 
@@ -46,6 +53,10 @@ namespace Aero_hockey.Game
         public virtual void Draw()
         {
             Screen.window.Draw(shape);
+        }
+        public virtual void OnCollisionWith(GameObject gameObject)
+        {
+
         }
     }
 }

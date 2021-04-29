@@ -15,13 +15,17 @@ namespace Aero_hockey.Game
         {
             position += direction * Time.deltaTime;
             if (position.X > Screen.widthWindow || position.X < 0)
-                direction.X = -direction.X;
+                direction.X = -direction.X * (AeroHokey.random.Next(8, 14) / 10f);
             if (position.Y > Screen.heightWindow || position.Y < 0)
-                direction.Y = -direction.Y;
+                direction.Y = -direction.Y * (AeroHokey.random.Next(8, 14) / 10f);
         }
-        public override void OnDestroy()
+        public override void OnCollisionWith(GameObject gameObject)
         {
-            
+            if(gameObject is Plate)
+            {
+                direction.X = -direction.X;
+                position.X += direction.X * 2 * Time.deltaTime;
+            }
         }
     }
 }

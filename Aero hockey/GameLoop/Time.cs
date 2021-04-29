@@ -3,7 +3,6 @@
     public static class Time
     {
         private static GameTimer _timer = null;
-
         public static float deltaTime
         {
             get => _timer.DeltaTime;

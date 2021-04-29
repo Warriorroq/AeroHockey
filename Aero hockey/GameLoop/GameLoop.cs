@@ -8,7 +8,6 @@ namespace Aero_hockey
     {
         public const int FPS = 144;
         public const float updateTime = 1f / FPS;
-
         protected GameLoop(string nameOfTheWindow)
         {
             Screen.window = new RenderWindow(new VideoMode(Screen.widthWindow, Screen.heightWindow), nameOfTheWindow);

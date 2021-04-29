@@ -15,6 +15,7 @@ namespace Aero_hockey.Game
         }
         public void Update()
         {
+            CheckCollisions();
             update?.Invoke();
             DestroyObjects();
         }
@@ -29,6 +30,19 @@ namespace Aero_hockey.Game
         public void Destroy(GameObject obj)
         {
             _objectsForDestroy.Add(obj);
+        }
+        private void CheckCollisions()
+        {
+            foreach (var obj1 in _objects)
+            {
+                foreach (var obj2 in _objects)
+                {
+                    if(obj1 != obj2)
+                    {
+                        obj1.Collide(obj2);
+                    }
+                }
+            }
         }
         private void DestroyObjects()
         {

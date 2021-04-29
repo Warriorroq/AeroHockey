@@ -16,21 +16,18 @@ namespace Aero_hockey.Game
         private void VelocityWithKey(object sender, KeyEventArgs e)
         {
             if(e.Code.Equals(Keyboard.Key.S))
-            {
                 _deltaSpeed = _speed * Time.deltaTime;
-            }
+            
             else if(e.Code.Equals(Keyboard.Key.W))
-            {
                 _deltaSpeed = -_speed * Time.deltaTime;
-            }
+            
         }
 
         public override void OnUpdate()
         {
             if (position.Y + _deltaSpeed + 100 > Screen.heightWindow || position.Y + _deltaSpeed < 0)
-            {
                 _deltaSpeed = 0;
-            }
+           
             position.Y += _deltaSpeed;
         }
     }

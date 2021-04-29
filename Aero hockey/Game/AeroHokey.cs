@@ -14,16 +14,13 @@ namespace Aero_hockey.Game
         }
         public override void Init()
         {
-            var ball = new Ball(scene, new RectangleShape(new Vector2f(10, 10))
-            {
+            var ball = new Ball(scene, new RectangleShape(new Vector2f(10, 10)) {
                 FillColor = Color.Black
             });
-            var plate = new Plate(scene, new RectangleShape(new Vector2f(20, 100))
-            {
+            var plate = new Plate(scene, new RectangleShape(new Vector2f(20, 100)) {
                 FillColor = Color.Black
             });
-            var bot = new PlateBot(scene, new RectangleShape(new Vector2f(20, 100))
-            {
+            var bot = new PlateBot(scene, new RectangleShape(new Vector2f(20, 100)) {
                 FillColor = Color.Black
             });
 

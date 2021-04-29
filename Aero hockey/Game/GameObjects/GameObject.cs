@@ -1,6 +1,8 @@
 ﻿using SFML.System;
 using SFML.Graphics;
 using System;
+using System.Collections.Generic;
+
 namespace Aero_hockey.Game
 {
     public abstract class GameObject
@@ -8,15 +10,16 @@ namespace Aero_hockey.Game
         public Vector2f position;
         public Action Destroy;
         public Shape shape;
+        public List<Component> components;
         public GameObject(Scene scene, Shape drawable)
         {
             shape = drawable;
-            if(!(scene is null))
-            {
+            components = new List<Component>();
+            components.Add(new CollideComponent(this));
+            if(!(scene is null)) {
                 CreateSceneBind(scene);
             }
-            else
-            {
+            else {
                 Destroy = (() => OnDestroy());
             }
         }
@@ -33,14 +36,26 @@ namespace Aero_hockey.Game
         public void Update()
         {
             shape.Position = position;
+            foreach(var component in components) {
+                component.Update();
+            }
             OnUpdate();
         }
-        public void Collide(GameObject gameObject)
+        public T GetComponent<T>() where T : Component
         {
-            if (shape.GetGlobalBounds().Intersects(gameObject.shape.GetGlobalBounds()))
-            {
-                OnCollisionWith(gameObject);
+            foreach(var component in components) {
+                if (component.GetType() == typeof(T))
+                    return component as T;
             }
+            return default(T);
+        }
+        public Component GetChildComponent<T>() where T : Component
+        {
+            foreach (var component in components) {
+                if (component is T)
+                    return component;
+            }
+            return default(T);
         }
         public virtual void OnDestroy()
         {

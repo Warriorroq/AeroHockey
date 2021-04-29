@@ -26,16 +26,14 @@ namespace Aero_hockey
             float totalTimeElapsed = 0f;
 
             Clock clock = new Clock();
-            while (Screen.window.IsOpen)
-            {
+            while (Screen.window.IsOpen) {
                 Screen.window.DispatchEvents();
                 totalTimeElapsed = clock.ElapsedTime.AsSeconds();
                 deltaTime = totalTimeElapsed - previosTimeElapsed;
                 previosTimeElapsed = totalTimeElapsed;
                 totalTimeBeforeUpdate += deltaTime;
 
-                if (totalTimeBeforeUpdate >= updateTime)
-                {
+                if (totalTimeBeforeUpdate >= updateTime) {
                     Time.GetTimer().Update(totalTimeBeforeUpdate, totalTimeElapsed);
                     totalTimeBeforeUpdate = 0f;
 

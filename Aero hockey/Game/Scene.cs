@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 namespace Aero_hockey.Game
 {
     public class Scene
@@ -33,21 +34,17 @@ namespace Aero_hockey.Game
         }
         private void CheckCollisions()
         {
-            foreach (var obj1 in _objects)
-            {
-                foreach (var obj2 in _objects)
-                {
+            var colliders = _objects.Where(x => !(x.GetComponent<CollideComponent>() is null)).Select(x => x.GetComponent<CollideComponent>()).ToArray();
+            foreach (var obj1 in colliders) {
+                foreach (var obj2 in colliders) {
                     if(obj1 != obj2)
-                    {
-                        obj1.Collide(obj2);
-                    }
+                        obj1.Collide(obj2.parent);
                 }
             }
         }
         private void DestroyObjects()
         {
-            foreach(var obj in _objectsForDestroy)
-            {
+            foreach(var obj in _objectsForDestroy) {
                 _objects.Remove(obj);
                 obj.Destroy();
             }

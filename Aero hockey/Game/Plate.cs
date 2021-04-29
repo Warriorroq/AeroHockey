@@ -5,8 +5,8 @@ namespace Aero_hockey.Game
 {
     public class Plate : GameObject
     {
-        private float _speed = Screen.heightWindow;
-        private float _deltaSpeed = 0f;
+        protected float _speed = Screen.heightWindow;
+        protected float _deltaSpeed = 0f;
         public Plate(Scene scene, Shape shape) : base(scene, shape)
         {
             position = new Vector2f(50, 300);
@@ -27,7 +27,7 @@ namespace Aero_hockey.Game
 
         public override void OnUpdate()
         {
-            if (position.Y + _deltaSpeed + 400 > Screen.heightWindow || position.Y + _deltaSpeed < 0)
+            if (position.Y + _deltaSpeed + 100 > Screen.heightWindow || position.Y + _deltaSpeed < 0)
             {
                 _deltaSpeed = 0;
             }

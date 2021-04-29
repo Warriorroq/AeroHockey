@@ -18,7 +18,11 @@ namespace Aero_hockey.Game
             {
                 FillColor = Color.Black
             });
-            var plate = new Plate(scene, new RectangleShape(new Vector2f(20, 400))
+            var plate = new Plate(scene, new RectangleShape(new Vector2f(20, 100))
+            {
+                FillColor = Color.Black
+            });
+            var bot = new PlateBot(scene, new RectangleShape(new Vector2f(20, 100))
             {
                 FillColor = Color.Black
             });
@@ -26,6 +30,7 @@ namespace Aero_hockey.Game
             scene.Init();
             scene.Add(ball);
             scene.Add(plate);
+            scene.Add(bot);
         }
         public override void LoadContent()
         {

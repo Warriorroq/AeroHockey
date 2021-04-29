@@ -28,6 +28,7 @@ namespace Aero_hockey.Game
             scene.draw += Draw;
             scene.update += Update;
             Destroy = (() => {
+                scene.Destroy(this);
                 OnDestroy();
                 scene.draw -= Draw;
                 scene.update -= Update;

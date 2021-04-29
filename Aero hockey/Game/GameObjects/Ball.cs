@@ -1,5 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
+using System;
+
 namespace Aero_hockey.Game
 {
     public class Ball : GameObject
@@ -10,6 +12,7 @@ namespace Aero_hockey.Game
             position = new Vector2f(200, 200);
             direction = new Vector2f(200, 100);
             this.shape.Origin = new Vector2f(10, 10) / 2f;
+            components.Add(new BallEffectComponent(this, scene));
         }
         public override void OnUpdate()
         {
@@ -18,8 +21,7 @@ namespace Aero_hockey.Game
                 direction.X = -direction.X * (AeroHokey.random.Next(8, 14) / 10f);
             
             if (position.Y > Screen.heightWindow || position.Y < 0)
-                direction.Y = -direction.Y * (AeroHokey.random.Next(8, 14) / 10f);
-            
+                direction.Y = -direction.Y * (AeroHokey.random.Next(8, 14) / 10f);            
         }
         public override void OnCollisionWith(GameObject gameObject)
         {

@@ -12,7 +12,6 @@ namespace Aero_hockey.Game
         {
             if (parent.shape.GetGlobalBounds().Intersects(gameObject.shape.GetGlobalBounds()))
                 parent.OnCollisionWith(gameObject);
-            
         }
     }
 }

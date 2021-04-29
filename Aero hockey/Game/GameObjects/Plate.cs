@@ -12,7 +12,6 @@ namespace Aero_hockey.Game
             position = new Vector2f(50, 300);
             Screen.window.KeyPressed += VelocityWithKey;
         }
-
         private void VelocityWithKey(object sender, KeyEventArgs e)
         {
             if(e.Code.Equals(Keyboard.Key.S))
@@ -20,15 +19,17 @@ namespace Aero_hockey.Game
             
             else if(e.Code.Equals(Keyboard.Key.W))
                 _deltaSpeed = -_speed * Time.deltaTime;
-            
         }
-
         public override void OnUpdate()
         {
             if (position.Y + _deltaSpeed + 100 > Screen.heightWindow || position.Y + _deltaSpeed < 0)
                 _deltaSpeed = 0;
            
             position.Y += _deltaSpeed;
+        }
+        public override void OnDestroy()
+        {
+            Screen.window.KeyPressed -= VelocityWithKey;
         }
     }
 }

@@ -1,33 +1,32 @@
 ﻿using System;
 using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
 namespace Aero_hockey.Game
 {
     public class AeroHokey : GameLoop
     {
         public static Random random = new Random(65_101);
-        Scene scene;
+        private Scene currentScene;
         public AeroHokey() : base("Aero hokey")
         {
-            scene = new Scene();
+            currentScene = new Scene();
         }
         public override void Init()
         {
-            var ball = new Ball(scene, new RectangleShape(new Vector2f(10, 10)) {
+            var ball = new Ball(currentScene, new RectangleShape(new Vector2f(10, 10)) {
                 FillColor = Color.Black
             });
-            var plate = new Plate(scene, new RectangleShape(new Vector2f(20, 100)) {
+            var plate = new Plate(currentScene, new RectangleShape(new Vector2f(20, 100)) {
                 FillColor = Color.Black
             });
-            var bot = new PlateBot(scene, new RectangleShape(new Vector2f(20, 100)) {
+            var bot = new PlateBot(currentScene, new RectangleShape(new Vector2f(20, 100)) {
                 FillColor = Color.Black
             });
 
-            scene.Init();
-            scene.Add(ball);
-            scene.Add(plate);
-            scene.Add(bot);
+            currentScene.Init();
+            currentScene.Add(ball);
+            currentScene.Add(plate);
+            currentScene.Add(bot);
         }
         public override void LoadContent()
         {
@@ -35,13 +34,14 @@ namespace Aero_hockey.Game
         }
         public override void Update()
         {
-            scene.Update();
+            currentScene.Update();
         }
         public override void Draw()
         {
-            scene.Draw();
+            currentScene.Draw();
+            DebugFPS();
         }
         private void DebugFPS()
-            => Debug($"FPS:{1 / Time.deltaTime:0.0}");
+            => Debug($"FPS:{1 / Time.deltaTime:0.00}");
     }
 }

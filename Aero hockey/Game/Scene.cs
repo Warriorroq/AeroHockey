@@ -9,6 +9,7 @@ namespace Aero_hockey.Game
         public event Action draw;
         private List<GameObject> _objects;
         private List<GameObject> _objectsForDestroy;
+        //public int Count => _objects.Count;
         public void Init()
         {
             _objects = new List<GameObject>();
@@ -44,10 +45,9 @@ namespace Aero_hockey.Game
         }
         private void DestroyObjects()
         {
-            foreach(var obj in _objectsForDestroy) {
+            foreach(var obj in _objectsForDestroy)
                 _objects.Remove(obj);
-                obj.Destroy();
-            }
+            _objectsForDestroy.Clear();
         }
     }
 }

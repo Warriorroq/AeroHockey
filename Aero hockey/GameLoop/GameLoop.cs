@@ -11,10 +11,9 @@ namespace Aero_hockey
 
         protected GameLoop(string nameOfTheWindow)
         {
-            var window = new RenderWindow(new VideoMode(Screen.widthWindow, Screen.heightWindow), nameOfTheWindow);
-            window.Closed += WindowClosed;
+            Screen.window = new RenderWindow(new VideoMode(Screen.widthWindow, Screen.heightWindow), nameOfTheWindow);
+            Screen.window.Closed += WindowClosed;
             Time.SetTimer(new GameTimer());
-            Screen.window = window;
         }
         public void Start()
         {
@@ -57,6 +56,6 @@ namespace Aero_hockey
         public abstract void Update();
         public abstract void Draw();
         public void Debug(object message)
-            => DebugUtility.Message(this, message);
+            => DebugUtility.Message(message);
     }
 }

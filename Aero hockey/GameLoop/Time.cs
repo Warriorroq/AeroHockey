@@ -1,5 +1,5 @@
-﻿namespace Aero_hockey
-{
+﻿namespace Aero_hockey 
+{ 
     public static class Time
     {
         private static GameTimer _timer = null;

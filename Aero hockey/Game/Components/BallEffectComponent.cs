@@ -20,7 +20,7 @@ namespace Aero_hockey.Game
                 FillColor = Color.Black,
                 Origin = new Vector2f(10, 10) / 2f
             }, parent.position));
-            _timer = 0.1f;
+            _timer = 0.05f;
         }
         public override void Update()
         {

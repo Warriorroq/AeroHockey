@@ -6,7 +6,7 @@ namespace Aero_hockey
 {
     public abstract class GameLoop
     {
-        public const int FPS = 144;
+        public const int FPS = 150;
         public const float updateTime = 1f / FPS;
         protected GameLoop(string nameOfTheWindow)
         {

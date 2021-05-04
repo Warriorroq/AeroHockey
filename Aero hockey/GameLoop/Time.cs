@@ -1,4 +1,4 @@
-﻿namespace Aero_hockey 
+﻿namespace AeroHockey 
 { 
     public static class Time
     {

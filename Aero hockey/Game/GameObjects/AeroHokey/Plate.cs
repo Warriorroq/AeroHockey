@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-namespace Aero_hockey.Game
+namespace AeroHockey.Game
 {
     public class Plate : GameObject
     {
@@ -9,7 +9,9 @@ namespace Aero_hockey.Game
         protected float _deltaSpeed = 0f;
         public Plate(Scene scene, Shape shape) : base(scene, shape)
         {
+            _components.Add(new CollideComponent(this));
             position = new Vector2f(50, 300);
+            //components.Add(new BallEffectComponent(this, scene));
             Screen.window.KeyPressed += VelocityWithKey;
         }
         private void VelocityWithKey(object sender, KeyEventArgs e)
@@ -20,14 +22,14 @@ namespace Aero_hockey.Game
             else if(e.Code.Equals(Keyboard.Key.W))
                 _deltaSpeed = -_speed * Time.deltaTime;
         }
-        public override void OnUpdate()
+        protected override void OnUpdate()
         {
             if (position.Y + _deltaSpeed + 100 > Screen.heightWindow || position.Y + _deltaSpeed < 0)
                 _deltaSpeed = 0;
            
             position.Y += _deltaSpeed;
         }
-        public override void OnDestroy()
+        protected override void OnDestroy()
         {
             Screen.window.KeyPressed -= VelocityWithKey;
         }

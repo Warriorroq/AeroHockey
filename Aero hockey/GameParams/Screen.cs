@@ -1,7 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 
-namespace Aero_hockey
+namespace AeroHockey
 {
     public static class Screen
     {

@@ -1,5 +1,5 @@
 ﻿using SFML.Graphics;
-namespace Aero_hockey
+namespace AeroHockey
 {
     public static class Fonts
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace Aero_hockey.Game
+namespace AeroHockey.Game
 {
     public class Scene
     {
@@ -9,7 +9,7 @@ namespace Aero_hockey.Game
         public event Action draw;
         private List<GameObject> _objects;
         private List<GameObject> _objectsForDestroy;
-        //public int Count => _objects.Count;
+        public int Count => _objects.Count;
         public void Init()
         {
             _objects = new List<GameObject>();
@@ -17,8 +17,8 @@ namespace Aero_hockey.Game
         }
         public void Update()
         {
-            CheckCollisions();
             update?.Invoke();
+            CheckCollisions();
             DestroyObjects();
         }
         public void Draw()

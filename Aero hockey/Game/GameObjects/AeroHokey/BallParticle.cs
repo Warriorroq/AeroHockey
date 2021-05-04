@@ -2,23 +2,23 @@
 using SFML.System;
 using System;
 
-namespace Aero_hockey.Game
+namespace AeroHockey.Game
 {
-    public class BallEffect : GameObject
+    public class BallParticle : GameObject
     {
+        protected float liveTime;
         private float _Timer;
-        private float _liveTime;
-        public BallEffect(Scene scene, Shape shape, Vector2f position) : base(scene, shape)
+        public BallParticle(Scene scene, Shape shape, Vector2f position) : base(scene, shape)
         {
             this.position = position;
             _Timer = 0f;
-            _liveTime = 0.5f;
+            liveTime = 0.5f;
         }
-        public override void OnUpdate()
+        protected override void OnUpdate()
         {
             _Timer += Time.deltaTime;
             ChangeColor();
-            if(_Timer >= _liveTime)
+            if(_Timer >= liveTime)
             {
                 Destroy();
             }
@@ -26,7 +26,7 @@ namespace Aero_hockey.Game
         private void ChangeColor()
         {
             var color = shape.FillColor;
-            color.A = (byte)(255 - 255 * (_Timer / _liveTime));
+            color.A = (byte)(255 - 255 * (_Timer / liveTime));
             shape.FillColor = color;
         }
         public override void Draw()

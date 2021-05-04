@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Aero_hockey.Game
+namespace AeroHockey.Game
 {
     public abstract class Component
     {
@@ -11,5 +11,6 @@ namespace Aero_hockey.Game
             this.parent = parent;
         }
         public virtual void Update() { }
+        public virtual void Destroy() { }
     }
 }

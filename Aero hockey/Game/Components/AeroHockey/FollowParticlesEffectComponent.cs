@@ -6,17 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aero_hockey.Game
+namespace AeroHockey.Game
 {
-    public class BallEffectComponent : Component
+    public class FollowParticlesEffectComponent : Component
     {
         private Action CreateBall;
         private float _timer;
         private float _deltaTime;
-        public BallEffectComponent(GameObject parent, Scene scene) : base(parent)
+        public FollowParticlesEffectComponent(GameObject parent, Scene scene) : base(parent)
         {
-            CreateBall = () => scene.Add(new BallEffect(scene,
-            new RectangleShape(new Vector2f(10, 10)) {
+            CreateBall = () => scene.Add(new BallParticle(scene,
+            new CircleShape(5) {
                 FillColor = Color.Black,
                 Origin = new Vector2f(10, 10) / 2f
             }, parent.position));

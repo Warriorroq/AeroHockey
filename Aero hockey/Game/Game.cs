@@ -29,8 +29,7 @@ namespace Project.Game
         public override void Draw()
         {
             currentScene.Draw();
-            Debug(currentScene.Count);
-            //DebugFPS();
+            DebugFPS();
         }
         private void DebugFPS()
             => Debug($"FPS:{1 / Time.deltaTime:0.00}");
@@ -56,7 +55,7 @@ namespace Project.Game
                 Origin = new Vector2f(10, 10) / 2f
             });
             currentScene.Add(ball);
-            var plate = new Plate(currentScene, new RectangleShape(new Vector2f(200, 100))
+            var plate = new Plate(currentScene, new RectangleShape(new Vector2f(20, 100))
             {
                 FillColor = Color.Black
             });

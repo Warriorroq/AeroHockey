@@ -1,5 +1,5 @@
 ﻿using SFML.Graphics;
-using System;
+
 namespace Project.Game
 {
     public class CollideComponent : Component
@@ -8,9 +8,11 @@ namespace Project.Game
         public CollideComponent(GameObject parent) : base(parent) { }
         public void Collide(GameObject gameObject)
         {
-            var bounds = gameObject.GetComponent<RenderComponent>().shape.GetGlobalBounds();
-            if (parent.GetComponent<RenderComponent>().shape.GetGlobalBounds().Intersects(bounds))
+            var bounds = GetBounds(gameObject);
+            if (GetBounds(parent).Intersects(bounds))
                 parent.OnCollisionWith(gameObject);
         }
+        public FloatRect GetBounds(GameObject obj)
+            => obj.GetComponent<RenderComponent>().shape.GetGlobalBounds();
     }
 }

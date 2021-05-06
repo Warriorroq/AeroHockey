@@ -2,6 +2,7 @@
 using SFML.Graphics;
 using SFML.System;
 using Project.Game.AeroHokey;
+using Project.Game.DRAW;
 namespace Project.Game
 {
     public class Game : GameLoop
@@ -16,7 +17,8 @@ namespace Project.Game
         public override void Init()
         {
             currentScene.Init();
-            CreateHokey();
+            //CreateHokey();
+            CreateDrawer();
         }
         public override void LoadContent()
         {
@@ -33,6 +35,12 @@ namespace Project.Game
         }
         private void DebugFPS()
             => Debug($"FPS:{1 / Time.deltaTime:0.00}");
+        private void CreateDrawer()
+        {
+            var drawer = new Drawer(currentScene);
+            currentScene.Add(drawer);
+            Screen.window.SetMouseCursorVisible(false);
+        }
         private void CreateHokey()
         {
             var bg = new Bg(currentScene, new RectangleShape(new Vector2f(Screen.widthWindow, Screen.heightWindow)));
@@ -40,18 +48,6 @@ namespace Project.Game
             var ball = new Ball(currentScene, new CircleShape(5)
             {
                 FillColor = Color.Blue,
-                Origin = new Vector2f(10, 10) / 2f
-            });
-            currentScene.Add(ball);
-            ball = new Ball(currentScene, new CircleShape(7)
-            {
-                FillColor = Color.Red,
-                Origin = new Vector2f(10, 10) / 2f
-            });
-            currentScene.Add(ball);
-            ball = new Ball(currentScene, new CircleShape(6)
-            {
-                FillColor = Color.Black,
                 Origin = new Vector2f(10, 10) / 2f
             });
             currentScene.Add(ball);

@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using SFML.Graphics;
-namespace AeroHockey.Game
+namespace Project.Game.AeroHokey
 {
     public class Bg : GameObject
     {
-        private Color color;
-        public Bg(Scene scene, Shape shape) : base(scene, shape)
+        public Bg(Scene scene, Shape shape) : base(scene)
         {
-            color = Color.Red;
-        }
-        protected override void OnUpdate()
-        {
-            shape.FillColor = color;
+            AddComponent(new RenderComponent(this, shape, scene));
         }
     }
 }

@@ -1,18 +1,16 @@
 ﻿using SFML.Graphics;
 using SFML.System;
-using System;
-
-namespace AeroHockey.Game
+namespace Project.Game.AeroHokey
 {
     public class Ball : GameObject
     {
         public Vector2f direction;
-        public Ball(Scene scene, Shape shape) : base(scene, shape)
+        public Ball(Scene scene, Shape shape) : base(scene)
         {
-            _components.Add(new CollideComponent(this));
-            _components.Add(new FollowParticlesEffectComponent(this, scene));
-            _components.Add(new GravityParticlesCollideComponent(this, scene, 40));
-
+            AddComponent(new CollideComponent(this));
+            AddComponent(new FollowParticlesEffectComponent(this, scene));
+            AddComponent(new GravityParticlesCollideComponent(this, scene, 40));
+            AddComponent(new RenderComponent(this, shape, scene) { layer = 1 });
             position = new Vector2f(200, 200 + Game.random.Next(50, 200));
             direction = new Vector2f(Game.random.Next(100, 700), Game.random.Next(100,500));
         }

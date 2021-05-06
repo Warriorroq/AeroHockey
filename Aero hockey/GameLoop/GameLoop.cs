@@ -2,7 +2,7 @@
 using SFML.Window;
 using SFML.Graphics;
 using SFML.System;
-namespace AeroHockey
+namespace Project
 {
     public abstract class GameLoop
     {

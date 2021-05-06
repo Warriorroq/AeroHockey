@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace AeroHockey.Game
+namespace Project.Game
 {
     public class Scene
     {
         public event Action update;
-        public event Action draw;
+        public event Action<int> draw;
+        protected int maxLayer = 3;
         private List<GameObject> _objects;
         private List<GameObject> _objectsForDestroy;
         public int Count => _objects.Count;
@@ -23,7 +24,8 @@ namespace AeroHockey.Game
         }
         public void Draw()
         {
-            draw?.Invoke();
+            for (int layer = 0; layer < maxLayer; layer++)
+                draw?.Invoke(layer);
         }
         public void Add(GameObject obj)
         {

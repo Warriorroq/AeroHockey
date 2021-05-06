@@ -1,8 +1,8 @@
 ﻿using System;
 using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
-namespace AeroHockey.Game
+using Project.Game.AeroHokey;
+namespace Project.Game
 {
     public class Game : GameLoop
     {
@@ -29,8 +29,8 @@ namespace AeroHockey.Game
         public override void Draw()
         {
             currentScene.Draw();
-            //Debug(currentScene.Count);
-            DebugFPS();
+            Debug(currentScene.Count);
+            //DebugFPS();
         }
         private void DebugFPS()
             => Debug($"FPS:{1 / Time.deltaTime:0.00}");
@@ -56,7 +56,7 @@ namespace AeroHockey.Game
                 Origin = new Vector2f(10, 10) / 2f
             });
             currentScene.Add(ball);
-            var plate = new Plate(currentScene, new RectangleShape(new Vector2f(20, 100))
+            var plate = new Plate(currentScene, new RectangleShape(new Vector2f(200, 100))
             {
                 FillColor = Color.Black
             });

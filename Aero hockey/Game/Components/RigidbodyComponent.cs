@@ -1,7 +1,7 @@
 ﻿using SFML.System;
 using System;
 
-namespace AeroHockey.Game
+namespace Project.Game
 {
     public sealed class RigidbodyComponent : Component
     {

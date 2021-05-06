@@ -1,15 +1,16 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using System;
-namespace AeroHockey.Game
+namespace Project.Game.AeroHokey
 {
     public class PlateBot : GameObject
     {
         protected float _speed = Screen.heightWindow;
         protected float _deltaSpeed = 10f;
-        public PlateBot(Scene scene, Shape shape) : base(scene, shape)
+        public PlateBot(Scene scene, Shape shape) : base(scene)
         {
-            _components.Add(new CollideComponent(this));
+            AddComponent(new CollideComponent(this));
+            AddComponent(new RenderComponent(this, shape, scene) { layer = 1 });
             position = new Vector2f(1030, 300);
         }
         protected override void OnUpdate()

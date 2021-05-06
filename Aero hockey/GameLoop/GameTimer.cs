@@ -1,4 +1,4 @@
-﻿namespace AeroHockey
+﻿namespace Project
 {
     public class GameTimer
     {

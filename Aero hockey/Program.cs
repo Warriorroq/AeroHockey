@@ -1,5 +1,5 @@
-﻿using AeroHockey.Game;
-namespace AeroHockey
+﻿using Project.Game;
+namespace Project
 {
     class Program
     {

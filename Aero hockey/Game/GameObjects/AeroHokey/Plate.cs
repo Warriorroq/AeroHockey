@@ -1,17 +1,17 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-namespace AeroHockey.Game
+namespace Project.Game.AeroHokey
 {
     public class Plate : GameObject
     {
         protected float _speed = Screen.heightWindow;
         protected float _deltaSpeed = 0f;
-        public Plate(Scene scene, Shape shape) : base(scene, shape)
+        public Plate(Scene scene, Shape shape) : base(scene)
         {
-            _components.Add(new CollideComponent(this));
+            AddComponent(new CollideComponent(this));
+            AddComponent(new RenderComponent(this, shape, scene) { layer = 1 });
             position = new Vector2f(50, 300);
-            //components.Add(new BallEffectComponent(this, scene));
             Screen.window.KeyPressed += VelocityWithKey;
         }
         private void VelocityWithKey(object sender, KeyEventArgs e)

@@ -8,19 +8,18 @@ namespace Project.Game
         public Vector2f Velocity {
             get => _velocity;
         }
-
-        private const float _gravity = 160f;
+        private Vector2f _gravityVector;
         private Vector2f _velocity;
         public RigidbodyComponent(GameObject parent) : base(parent)
         {
-
+            _gravityVector = new Vector2f(0f, 100f);
         }
         public void SetVelocity(Vector2f newVelocity)
             => _velocity = newVelocity;
         public sealed override void Update()
         {
             parent.position += _velocity * Time.deltaTime;
-            _velocity.Y += _gravity * Time.deltaTime;
+            _velocity += _gravityVector * Time.deltaTime;
         }
     }
 }

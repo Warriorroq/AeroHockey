@@ -3,6 +3,7 @@ using SFML.Graphics;
 using SFML.System;
 using Project.Game.AeroHokey;
 using Project.Game.DRAW;
+using Project.Debug;
 namespace Project.Game
 {
     public class Game : GameLoop
@@ -22,6 +23,7 @@ namespace Project.Game
         }
         public override void LoadContent()
         {
+            Fonts.LoadContent();
             DebugUtility.LoadContent(Fonts.CEAZAR);
         }
         public override void Update()

@@ -6,11 +6,15 @@ namespace Project.Game.AeroHokey
 {
     public class GravityParticlesCollideComponent : Component
     {
-        public Action CreateParticles;
+        private Scene _scene;
+        private int _particles;
         public GravityParticlesCollideComponent(GameObject parent, Scene scene, int particles) : base(parent)
         {
-            CreateParticles = () => AddParticlesToScreen(scene, particles);
+            _scene = scene;
+            _particles = particles;
         }
+        public void CreateParticles()
+            => AddParticlesToScreen(_scene, _particles);
         private void AddParticlesToScreen(Scene scene, int particles)
         {
             for (int i = 0; i < particles; i++)

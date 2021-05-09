@@ -5,21 +5,29 @@ namespace Project.Game.AeroHokey
 {
     public class FollowParticlesEffectComponent : Component
     {
-        private Action CreateBall;
         private float _timer;
         private float _deltaTime;
+        private Scene _scene;
         public FollowParticlesEffectComponent(GameObject parent, Scene scene) : base(parent)
         {
-            CreateBall = () => scene.Add(new BallParticle(scene,
-            new CircleShape(5) {
-                FillColor = Color.Black,
-                Origin = new Vector2f(10, 10) / 2f
-            }, parent.position));
+            _scene = scene;
             _timer = 0.05f;
         }
-        public override void Update()
+        public void CreateBall()
         {
-            _deltaTime += Time.deltaTime;
+            _scene.Add(new BallParticle(
+                _scene,
+                new CircleShape(5)
+                {
+                    FillColor = Color.Black,
+                    Origin = new Vector2f(10, 10) / 2f
+                }, 
+                parent.position)
+                );
+        }
+        public override void Update(float deltaTime)
+        {
+            _deltaTime += deltaTime;
             if(_deltaTime > _timer)
             {
                 _deltaTime = 0;

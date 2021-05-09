@@ -25,9 +25,9 @@ namespace Project.Game.AeroHokey
                 parent.position)
                 );
         }
-        public override void Update(float deltaTime)
+        public override void Update()
         {
-            _deltaTime += deltaTime;
+            _deltaTime += Time.deltaTime;
             if(_deltaTime > _timer)
             {
                 _deltaTime = 0;

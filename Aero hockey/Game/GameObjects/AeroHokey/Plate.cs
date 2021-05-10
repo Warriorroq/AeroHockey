@@ -17,10 +17,10 @@ namespace Project.Game.AeroHokey
         private void VelocityWithKey(object sender, KeyEventArgs e)
         {
             if(e.Code.Equals(Keyboard.Key.S))
-                _deltaSpeed = _speed * Time.deltaTime;
+                _deltaSpeed = _speed * objTimer.deltaTime;
             
             else if(e.Code.Equals(Keyboard.Key.W))
-                _deltaSpeed = -_speed * Time.deltaTime;
+                _deltaSpeed = -_speed * objTimer.deltaTime;
         }
         protected override void OnUpdate()
         {

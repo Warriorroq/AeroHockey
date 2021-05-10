@@ -1,4 +1,6 @@
 ﻿using SFML.System;
+using System;
+using System.Collections.Generic;
 
 namespace Project
 {
@@ -6,8 +8,10 @@ namespace Project
     {
         public float deltaTime;
         public float TimeScale;
-        public float TotalTimeElapsed 
-            => _clock.ElapsedTime.AsSeconds();
+        public event Action<float> TimeUpdate;
+        public List<InvokeAction> repeatActions;
+
+        private float TotalTimeElapsed => _clock.ElapsedTime.AsSeconds();
         private float _totalTimeBeforeUpdate;
         private float _updateTime;
         private float _previosTimeElapsed;
@@ -21,10 +25,9 @@ namespace Project
             _clock = new Clock();
         }
         public void Init(float updateTime)
-        {
-            _updateTime = updateTime;
-        }
-        public bool Update()
+            =>_updateTime = updateTime;
+        
+        public bool IsUpdate()
         {
             _totalTimeBeforeUpdate += TotalTimeElapsed - _previosTimeElapsed;
             _previosTimeElapsed = TotalTimeElapsed;
@@ -36,5 +39,9 @@ namespace Project
             }
             return false;
         }
+        public void Invoke(Action action, float startTime)
+            =>new InvokeAction(this, action, startTime);
+        public void InvokeRepeating(Action action, float startTime, float repeatTime)
+            =>repeatActions.Add(new InvokeRepeatingAction(this, action, startTime, repeatTime));
     }
 }

@@ -17,7 +17,7 @@ namespace Project.Game
         }
         protected override void OnUpdate()
         {
-            _Timer += Time.deltaTime;
+            _Timer += objTimer.deltaTime;
             ChangeColor();
             if(_Timer >= liveTime)
             {

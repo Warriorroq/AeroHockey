@@ -24,7 +24,7 @@ namespace Project
             gameTime.Init(updateTime);
             while (Screen.window.IsOpen) {
                 Screen.window.DispatchEvents();
-                if (gameTime.Update()) {
+                if (gameTime.IsUpdate()) {
                     Update();
 
                     Screen.window.Clear(Color.White);

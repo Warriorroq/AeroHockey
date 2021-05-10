@@ -17,10 +17,10 @@ namespace Project.Game.AeroHokey
         {
             ChangeDirection();
             if (position.Y + _deltaSpeed + 100 > Screen.heightWindow)
-                _deltaSpeed = -_speed * Time.deltaTime;
+                _deltaSpeed = -_speed * objTimer.deltaTime;
             
             else if(position.Y + _deltaSpeed < 0)
-                _deltaSpeed = _speed * Time.deltaTime;
+                _deltaSpeed = _speed * objTimer.deltaTime;
             
             position.Y += _deltaSpeed;
         }
@@ -30,7 +30,7 @@ namespace Project.Game.AeroHokey
                 _deltaSpeed = -_deltaSpeed;
             
             if (_deltaSpeed == 0)
-                _deltaSpeed = _speed * Time.deltaTime;
+                _deltaSpeed = _speed * objTimer.deltaTime;
         }
     }
 }

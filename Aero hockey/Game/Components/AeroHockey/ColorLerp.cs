@@ -11,7 +11,7 @@ namespace Project.Game.AeroHokey
             _shape = shape;
             _shape.FillColor = startColor;
             var color = endColor - startColor;
-            var alfa = parent.Time.deltaTime / time * speed;
+            var alfa = parent.objTimer.deltaTime / time * speed;
             color.A = (byte)(color.A * alfa * 2);
             color.R = (byte)(color.R * alfa * 2);
             color.G = (byte)(color.G * alfa * 2);

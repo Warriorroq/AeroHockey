@@ -16,7 +16,7 @@ namespace Project.Game.AeroHokey
         }
         protected override void OnUpdate()
         {
-            position += direction * Time.deltaTime;
+            position += direction * objTimer.deltaTime;
             if (position.X > Screen.widthWindow || position.X < 0)
                 direction.X *= -1f;
 
@@ -29,7 +29,7 @@ namespace Project.Game.AeroHokey
             {
                 GetComponent<GravityParticlesCollideComponent>().CreateParticles();
                 direction.X *= -1;
-                position.X += direction.X * 2 * Time.deltaTime;
+                position.X += direction.X * 2 * objTimer.deltaTime;
             }
         }
     }

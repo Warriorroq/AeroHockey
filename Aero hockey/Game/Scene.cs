@@ -6,15 +6,20 @@ namespace Project.Game
     public class Scene
     {
         public event Action update;
-        public event Action<int> draw;
+        public int Count => _objects.Count;
+
+        protected List<List<RenderComponent>> _renderComponents;
         protected int maxLayer = 3;
+
         private List<GameObject> _objects;
         private List<GameObject> _objectsForDestroy;
-        public int Count => _objects.Count;
         public void Init()
         {
-            _objects = new List<GameObject>();
-            _objectsForDestroy = new List<GameObject>();
+            _renderComponents = new();
+            for(int layer=0; layer<maxLayer; layer++)
+                _renderComponents.Add(new List<RenderComponent>());
+            _objects = new();
+            _objectsForDestroy = new();
         }
         public void Update()
         {
@@ -25,30 +30,36 @@ namespace Project.Game
         public void Draw()
         {
             for (int layer = 0; layer < maxLayer; layer++)
-                draw?.Invoke(layer);
+                _renderComponents[layer].ForEach(x => x.Draw());
         }
         public void Add(GameObject obj)
         {
             _objects.Add(obj);
+            var render = obj.GetComponent<RenderComponent>();
+            if (render is not null)
+                _renderComponents[render.layer].Add(render);
         }
         public void Destroy(GameObject obj)
-        {
-            _objectsForDestroy.Add(obj);
-        }
+            =>_objectsForDestroy.Add(obj);
         private void CheckCollisions()
         {
             var colliders = _objects.Where(x => !(x.GetComponent<CollideComponent>() is null)).Select(x => x.GetComponent<CollideComponent>()).ToArray();
             foreach (var obj1 in colliders) {
                 foreach (var obj2 in colliders) {
                     if(obj1 != obj2)
-                        obj1.Collide(obj2.parent);
+                        obj1.Collide(obj2.owner);
                 }
             }
         }
         private void DestroyObjects()
         {
             foreach(var obj in _objectsForDestroy)
+            {
                 _objects.Remove(obj);
+                var render = obj.GetComponent<RenderComponent>();
+                if (render is not null)
+                    _renderComponents[render.layer].Remove(render);
+            }
             _objectsForDestroy.Clear();
         }
     }

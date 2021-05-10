@@ -27,7 +27,7 @@ namespace Project.Game.AeroHokey
         }
         public override void Update()
         {
-            _deltaTime += Time.deltaTime;
+            _deltaTime += parent.Time.deltaTime;
             if(_deltaTime > _timer)
             {
                 _deltaTime = 0;

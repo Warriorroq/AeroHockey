@@ -7,37 +7,24 @@ namespace Project
 {
     public abstract class GameLoop
     {
-        public const int FPS = 150;
+        public const int FPS = 160;
         public const float updateTime = 1f / FPS;
+        public Timer gameTime;
         protected GameLoop(string nameOfTheWindow)
         {
             Screen.window = new RenderWindow(new VideoMode(Screen.widthWindow, Screen.heightWindow), nameOfTheWindow);
             Screen.window.Closed += WindowClosed;
-            Time.SetTimer(new GameTimer());
+            gameTime = new Timer();
         }
         public void Start()
         {
 
             LoadContent();
             Init();
-
-            float totalTimeBeforeUpdate = 0f;
-            float previosTimeElapsed = 0f;
-            float deltaTime = 0f;
-            float totalTimeElapsed = 0f;
-
-            Clock clock = new Clock();
+            gameTime.Init(updateTime);
             while (Screen.window.IsOpen) {
                 Screen.window.DispatchEvents();
-                totalTimeElapsed = clock.ElapsedTime.AsSeconds();
-                deltaTime = totalTimeElapsed - previosTimeElapsed;
-                previosTimeElapsed = totalTimeElapsed;
-                totalTimeBeforeUpdate += deltaTime;
-
-                if (totalTimeBeforeUpdate >= updateTime) {
-                    Time.GetTimer().Update(totalTimeBeforeUpdate, totalTimeElapsed);
-                    totalTimeBeforeUpdate = 0f;
-
+                if (gameTime.Update()) {
                     Update();
 
                     Screen.window.Clear(Color.White);

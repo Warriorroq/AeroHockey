@@ -4,23 +4,23 @@ namespace Project.Game.AeroHokey
     public class ColorLerp : Component
     {
         public float speed = 1f;
-        private Color _deltaColor;
+        private Color _deltaColor;        
         private Shape _shape;
         public ColorLerp(GameObject parent, Shape shape, Color startColor, Color endColor, float time) : base(parent)
         {
             _shape = shape;
             _shape.FillColor = startColor;
             var color = endColor - startColor;
-            var alfa = Time.deltaTime / time * speed;
-            color.A = (byte)(color.A * alfa);
-            color.R = (byte)(color.R * alfa);
-            color.G = (byte)(color.G * alfa);
-            color.B = (byte)(color.B * alfa);
+            var alfa = parent.Time.deltaTime / time * speed;
+            color.A = (byte)(color.A * alfa * 2);
+            color.R = (byte)(color.R * alfa * 2);
+            color.G = (byte)(color.G * alfa * 2);
+            color.B = (byte)(color.B * alfa * 2);
             _deltaColor = color;
         }
         public override void Update()
         {
-            _shape.FillColor = _shape.FillColor + _deltaColor;
+            _shape.FillColor += _deltaColor;
         }
     }
 }

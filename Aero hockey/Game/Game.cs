@@ -36,11 +36,11 @@ namespace Project.Game
             DebugFPS();
         }
         private void DebugFPS()
-            => Debug($"FPS:{1 / Time.deltaTime:0.00}");
+            => Debug($"FPS:{1 / gameTime.deltaTime:0.00}");
         private void CreateDrawer()
         {
-            var drawer = new Drawer(currentScene);
-            currentScene.Add(drawer);
+            var gameObject = new Drawer(currentScene);
+            currentScene.Add(gameObject);
             Screen.window.SetMouseCursorVisible(false);
         }
         private void CreateHokey()

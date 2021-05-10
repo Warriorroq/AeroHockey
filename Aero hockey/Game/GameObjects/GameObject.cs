@@ -10,9 +10,11 @@ namespace Project.Game
         public Vector2f position;
         public Action Destroy;
         public event Action<GameObject> Collision;
+        public Timer Time;
         protected List<Component> _components;
         public GameObject(Scene scene)
         {
+            Time = new Timer();
             _components = new List<Component>();
             if(!(scene is null)) {
                 CreateSceneBind(scene);
@@ -23,6 +25,7 @@ namespace Project.Game
         }
         public void Update()
         {
+            Time.Update();
             foreach(var component in _components)
                 component.Update();
             OnUpdate();

@@ -12,6 +12,7 @@ namespace Project.Game.AeroHokey
             rigitBody.SetVelocity(new Vector2f(Game.random.Next(-80, 80), Game.random.Next(-90, -10)));
             AddComponent(new ColorLerp(this, shape, Color.Black, Color.Red, .6f) { speed = 4f });
             AddComponent(rigitBody);
+            Time.TimeScale = 1.33f;
         }
     }
 }

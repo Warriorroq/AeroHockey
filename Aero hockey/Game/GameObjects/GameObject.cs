@@ -25,10 +25,12 @@ namespace Project.Game
         }
         public void Update()
         {
-            Time.Update();
-            foreach(var component in _components)
-                component.Update();
-            OnUpdate();
+            if (Time.Update())
+            {
+                foreach (var component in _components)
+                    component.Update();
+                OnUpdate();
+            }
         }
         public void AddComponent(Component component)
             =>_components?.Add(component);

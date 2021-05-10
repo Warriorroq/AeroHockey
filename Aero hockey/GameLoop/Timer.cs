@@ -5,9 +5,9 @@ namespace Project
     public class Timer
     {
         public float deltaTime;
-        public float TotalTimeElapsed { 
-            get => _clock.ElapsedTime.AsSeconds();
-        }
+        public float TimeScale;
+        public float TotalTimeElapsed 
+            => _clock.ElapsedTime.AsSeconds();
         private float _totalTimeBeforeUpdate;
         private float _updateTime;
         private float _previosTimeElapsed;
@@ -17,6 +17,7 @@ namespace Project
             deltaTime = 0f;
             _totalTimeBeforeUpdate = 0f;
             _previosTimeElapsed = 0f;
+            TimeScale = 1f;
             _clock = new Clock();
         }
         public void Init(float updateTime)
@@ -25,12 +26,11 @@ namespace Project
         }
         public bool Update()
         {
-            deltaTime = TotalTimeElapsed - _previosTimeElapsed;
+            _totalTimeBeforeUpdate += TotalTimeElapsed - _previosTimeElapsed;
             _previosTimeElapsed = TotalTimeElapsed;
-            _totalTimeBeforeUpdate += deltaTime;
-            if(_totalTimeBeforeUpdate >= _updateTime)
+            if (_totalTimeBeforeUpdate >= _updateTime)
             {
-                deltaTime = _totalTimeBeforeUpdate;
+                deltaTime = _totalTimeBeforeUpdate * TimeScale;
                 _totalTimeBeforeUpdate = 0;
                 return true;
             }

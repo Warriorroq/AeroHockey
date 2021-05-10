@@ -13,7 +13,8 @@ namespace Project
         protected float _startTime;
         public InvokeAction(Timer timer,Action action, float startTime)
         {
-            timer.TimeUpdate += Act;
+            _timer = timer;
+            _timer.TimeUpdate += Act;
             _action = action;
             _startTime = startTime;
         }
@@ -26,7 +27,7 @@ namespace Project
         protected virtual void Invoke()
         {
             _action.Invoke();
-            _timer.TimeUpdate -= Act;
+            Destroy();
         }
         public void Destroy()
             =>_timer.TimeUpdate -= Act;

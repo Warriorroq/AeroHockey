@@ -23,6 +23,7 @@ namespace Project
             _previosTimeElapsed = 0f;
             TimeScale = 1f;
             _clock = new Clock();
+            repeatActions = new();
         }
         public void Init(float updateTime)
             =>_updateTime = updateTime;
@@ -34,6 +35,7 @@ namespace Project
             if (_totalTimeBeforeUpdate >= _updateTime)
             {
                 deltaTime = _totalTimeBeforeUpdate * TimeScale;
+                TimeUpdate?.Invoke(deltaTime);
                 _totalTimeBeforeUpdate = 0;
                 return true;
             }

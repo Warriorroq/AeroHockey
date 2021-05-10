@@ -26,7 +26,8 @@ namespace Project.Game.AeroHokey
                             FillColor = Color.Magenta,
                             Origin = new Vector2f(10, 10) / 2f
                         },
-                    parent.position)
+                    parent.position, 
+                    3f)
                     );
             }
         }

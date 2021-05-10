@@ -18,8 +18,8 @@ namespace Project.Game
         public override void Init()
         {
             currentScene.Init();
-            //CreateHokey();
-            CreateDrawer();
+            CreateHokey();
+            //CreateDrawer();
         }
         public override void LoadContent()
         {

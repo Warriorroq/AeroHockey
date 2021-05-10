@@ -5,13 +5,11 @@ namespace Project.Game.AeroHokey
 {
     public class FollowParticlesEffectComponent : Component
     {
-        private float _timer;
-        private float _deltaTime;
         private Scene _scene;
         public FollowParticlesEffectComponent(GameObject parent, Scene scene) : base(parent)
         {
             _scene = scene;
-            _timer = 0.05f;
+            parent.objTimer.InvokeRepeating(CreateBall, 0f, 0.1f);
         }
         public void CreateBall()
         {
@@ -22,17 +20,9 @@ namespace Project.Game.AeroHokey
                     FillColor = Color.Black,
                     Origin = new Vector2f(10, 10) / 2f
                 }, 
-                parent.position)
+                parent.position, 
+                3f)
                 );
-        }
-        public override void Update()
-        {
-            _deltaTime += parent.objTimer.deltaTime;
-            if(_deltaTime > _timer)
-            {
-                _deltaTime = 0;
-                CreateBall();
-            }
         }
     }
 }

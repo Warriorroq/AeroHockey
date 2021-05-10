@@ -20,7 +20,7 @@ namespace Project.Game.AeroHokey
                     FillColor = Color.Black,
                     Origin = new Vector2f(10, 10) / 2f
                 }, 
-                parent.position, 
+                owner.position, 
                 3f)
                 );
         }

@@ -5,11 +5,11 @@ namespace Project.Game
 {
     public abstract class Component
     {
-        public GameObject parent;
+        public GameObject owner;
         public Action OnDestroy;
-        public Component(GameObject parent)
+        public Component(GameObject owner)
         {
-            this.parent = parent;
+            this.owner = owner;
         }
         public virtual void Update() { }
         public void Destroy() {

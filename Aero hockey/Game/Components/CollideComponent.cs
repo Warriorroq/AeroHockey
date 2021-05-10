@@ -9,8 +9,8 @@ namespace Project.Game
         public void Collide(GameObject gameObject)
         {
             var bounds = GetBounds(gameObject);
-            if (GetBounds(parent).Intersects(bounds))
-                parent.OnCollisionWith(gameObject);
+            if (GetBounds(owner).Intersects(bounds))
+                owner.OnCollisionWith(gameObject);
         }
         public FloatRect GetBounds(GameObject obj)
             => obj.GetComponent<RenderComponent>().shape.GetGlobalBounds();

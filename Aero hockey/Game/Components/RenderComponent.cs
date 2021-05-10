@@ -9,17 +9,10 @@ namespace Project.Game
         public RenderComponent(GameObject parent ,Shape shape, Scene scene) : base(parent)
         {
             this.shape = shape;
-            scene.draw += Draw;
-            OnDestroy = () => scene.draw -= Draw;
         }
         public override void Update()
-        {
-            shape.Position = parent.position;
-        }
-        public virtual void Draw(int layer)
-        {
-            if (this.layer == layer)
-                Screen.window.Draw(shape);
-        }
+            =>shape.Position = owner.position;
+        public virtual void Draw()
+            =>Screen.window.Draw(shape);
     }
 }

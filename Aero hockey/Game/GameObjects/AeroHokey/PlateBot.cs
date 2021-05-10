@@ -12,10 +12,10 @@ namespace Project.Game.AeroHokey
             AddComponent(new CollideComponent(this));
             AddComponent(new RenderComponent(this, shape, scene) { layer = 1 });
             position = new Vector2f(1030, 300);
+            objTimer.InvokeRepeating(ChangeDirection, 1f, 1f);
         }
         protected override void OnUpdate()
-        {
-            ChangeDirection();
+        {            
             if (position.Y + _deltaSpeed + 100 > Screen.heightWindow)
                 _deltaSpeed = -_speed * objTimer.deltaTime;
             
@@ -26,7 +26,7 @@ namespace Project.Game.AeroHokey
         }
         private void ChangeDirection()
         {
-            if(Game.random.Next(0, 1000) < 1)
+            if(Game.random.Next(0, 5) < 2)
                 _deltaSpeed = -_deltaSpeed;
             
             if (_deltaSpeed == 0)

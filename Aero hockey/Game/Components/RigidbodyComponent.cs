@@ -18,8 +18,8 @@ namespace Project.Game
             => _velocity = newVelocity;
         public sealed override void Update()
         {
-            parent.position += _velocity * parent.objTimer.deltaTime;
-            _velocity += _gravityVector * parent.objTimer.deltaTime;
+            owner.position += _velocity * owner.objTimer.deltaTime;
+            _velocity += _gravityVector * owner.objTimer.deltaTime;
         }
     }
 }

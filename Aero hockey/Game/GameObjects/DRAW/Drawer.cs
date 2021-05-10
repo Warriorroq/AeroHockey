@@ -11,14 +11,14 @@ namespace Project.Game.DRAW
         public Drawer(Scene scene) : base(scene)
         {
             Screen.window.MouseMoved += Moved;
-            AddComponent(new RenderComponent(this, new CircleShape(5) { FillColor = Color.Black, Origin = new Vector2f(10,10)/2f}, scene));
-            AddComponent(new GravityParticlesCollideComponent(this, scene, 1));
+            AddComponent(new ComponentRender(this, new CircleShape(5) { FillColor = Color.Black, Origin = new Vector2f(10,10)/2f}, scene));
+            AddComponent(new ComponentGravityParticlesCollide(this, scene, 1));
         }
         private void Moved(object sender, MouseMoveEventArgs e)
         {
             position.X = e.X;
             position.Y = e.Y;
-            GetComponent<GravityParticlesCollideComponent>().CreateParticles();
+            GetComponent<ComponentGravityParticlesCollide>().CreateParticles();
         }
     }
 }

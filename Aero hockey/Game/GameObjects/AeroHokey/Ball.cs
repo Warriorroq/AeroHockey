@@ -7,10 +7,10 @@ namespace Project.Game.AeroHokey
         public Vector2f direction;
         public Ball(Scene scene, Shape shape) : base(scene)
         {
-            AddComponent(new CollideComponent(this));
-            AddComponent(new FollowParticlesEffectComponent(this, scene));
-            AddComponent(new GravityParticlesCollideComponent(this, scene, 40));
-            AddComponent(new RenderComponent(this, shape, scene) { layer = 1 });
+            AddComponent(new ComponentCollide(this));
+            AddComponent(new ComponentFollowParticlesEffect(this, scene));
+            AddComponent(new ComponentGravityParticlesCollide(this, scene, 40));
+            AddComponent(new ComponentRender(this, shape, scene) { layer = 1 });
             position = new Vector2f(200, 200 + Game.random.Next(50, 200));
             direction = new Vector2f(Game.random.Next(100, 700), Game.random.Next(100,500));
         }
@@ -27,7 +27,7 @@ namespace Project.Game.AeroHokey
         {
             if (gameObject is Plate || gameObject is PlateBot)
             {
-                GetComponent<GravityParticlesCollideComponent>().CreateParticles();
+                GetComponent<ComponentGravityParticlesCollide>().CreateParticles();
                 direction.X *= -1;
                 position.X += direction.X * 2 * objTimer.deltaTime;
             }

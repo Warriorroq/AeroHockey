@@ -9,8 +9,8 @@ namespace Project.Game.AeroHokey
         protected float _deltaSpeed = 0f;
         public Plate(Scene scene, Shape shape) : base(scene)
         {
-            AddComponent(new CollideComponent(this));
-            AddComponent(new RenderComponent(this, shape, scene) { layer = 1 });
+            AddComponent(new ComponentCollide(this));
+            AddComponent(new ComponentRender(this, shape, scene) { layer = 1 });
             position = new Vector2f(50, 300);
             Screen.window.KeyPressed += VelocityWithKey;
         }

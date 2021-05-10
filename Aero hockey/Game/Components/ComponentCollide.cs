@@ -2,10 +2,10 @@
 
 namespace Project.Game
 {
-    public class CollideComponent : Component
+    public class ComponentCollide : Component
     {
 
-        public CollideComponent(GameObject parent) : base(parent) { }
+        public ComponentCollide(GameObject parent) : base(parent) { }
         public void Collide(GameObject gameObject)
         {
             var bounds = GetBounds(gameObject);
@@ -13,6 +13,6 @@ namespace Project.Game
                 owner.OnCollisionWith(gameObject);
         }
         public FloatRect GetBounds(GameObject obj)
-            => obj.GetComponent<RenderComponent>().shape.GetGlobalBounds();
+            => obj.GetComponent<ComponentRender>().shape.GetGlobalBounds();
     }
 }

@@ -1,12 +1,12 @@
 ﻿using SFML.Graphics;
 namespace Project.Game.AeroHokey
 {
-    public class ColorLerp : Component
+    public class ComponentColorLerp : Component
     {
         public float speed = 1f;
         private Color _deltaColor;        
         private Shape _shape;
-        public ColorLerp(GameObject parent, Shape shape, Color startColor, Color endColor, float time) : base(parent)
+        public ComponentColorLerp(GameObject parent, Shape shape, Color startColor, Color endColor, float time) : base(parent)
         {
             _shape = shape;
             _shape.FillColor = startColor;

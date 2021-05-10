@@ -7,10 +7,10 @@ namespace Project.Game
     {
         protected float _liveTime;
         private float _Timer;
-        private RenderComponent render;
+        private ComponentRender render;
         public BallParticle(Scene scene, Shape shape, Vector2f position, float liveTime) : base(scene)
         {
-            render = new RenderComponent(this, shape, scene);
+            render = new ComponentRender(this, shape, scene);
             AddComponent(render);
             this.position = position;
             _liveTime = liveTime;

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Aero_hockey</RootNamespace>
+    <RootNamespace>Project</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

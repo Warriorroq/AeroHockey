@@ -8,7 +8,7 @@ namespace Project.Game
         public event Action update;
         public int Count => _objects.Count;
 
-        protected List<List<RenderComponent>> _renderComponents;
+        protected List<List<ComponentRender>> _renderComponents;
         protected int maxLayer = 3;
 
         private List<GameObject> _objects;
@@ -17,7 +17,7 @@ namespace Project.Game
         {
             _renderComponents = new();
             for(int layer=0; layer<maxLayer; layer++)
-                _renderComponents.Add(new List<RenderComponent>());
+                _renderComponents.Add(new List<ComponentRender>());
             _objects = new();
             _objectsForDestroy = new();
         }
@@ -35,7 +35,7 @@ namespace Project.Game
         public void Add(GameObject obj)
         {
             _objects.Add(obj);
-            var render = obj.GetComponent<RenderComponent>();
+            var render = obj.GetComponent<ComponentRender>();
             if (render is not null)
                 _renderComponents[render.layer].Add(render);
         }
@@ -43,7 +43,7 @@ namespace Project.Game
             =>_objectsForDestroy.Add(obj);
         private void CheckCollisions()
         {
-            var colliders = _objects.Where(x => !(x.GetComponent<CollideComponent>() is null)).Select(x => x.GetComponent<CollideComponent>()).ToArray();
+            var colliders = _objects.Where(x => !(x.GetComponent<ComponentCollide>() is null)).Select(x => x.GetComponent<ComponentCollide>()).ToArray();
             foreach (var obj1 in colliders) {
                 foreach (var obj2 in colliders) {
                     if(obj1 != obj2)
@@ -56,7 +56,7 @@ namespace Project.Game
             foreach(var obj in _objectsForDestroy)
             {
                 _objects.Remove(obj);
-                var render = obj.GetComponent<RenderComponent>();
+                var render = obj.GetComponent<ComponentRender>();
                 if (render is not null)
                     _renderComponents[render.layer].Remove(render);
             }

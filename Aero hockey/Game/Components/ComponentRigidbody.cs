@@ -3,14 +3,14 @@ using System;
 
 namespace Project.Game
 {
-    public sealed class RigidbodyComponent : Component
+    public sealed class ComponentRigidbody : Component
     {
         public Vector2f Velocity {
             get => _velocity;
         }
         private Vector2f _gravityVector;
         private Vector2f _velocity;
-        public RigidbodyComponent(GameObject parent) : base(parent)
+        public ComponentRigidbody(GameObject parent) : base(parent)
         {
             _gravityVector = new Vector2f(0f, 100f);
         }

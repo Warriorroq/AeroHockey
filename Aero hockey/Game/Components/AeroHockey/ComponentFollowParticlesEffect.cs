@@ -3,10 +3,10 @@ using SFML.System;
 using System;
 namespace Project.Game.AeroHokey
 {
-    public class FollowParticlesEffectComponent : Component
+    public class ComponentFollowParticlesEffect : Component
     {
         private Scene _scene;
-        public FollowParticlesEffectComponent(GameObject parent, Scene scene) : base(parent)
+        public ComponentFollowParticlesEffect(GameObject parent, Scene scene) : base(parent)
         {
             _scene = scene;
             parent.objTimer.InvokeRepeating(CreateBall, 0f, 0.1f);

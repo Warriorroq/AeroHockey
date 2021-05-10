@@ -1,7 +1,6 @@
 ﻿using System;
 using SFML.Window;
 using SFML.Graphics;
-using SFML.System;
 using Project.Debug;
 namespace Project
 {

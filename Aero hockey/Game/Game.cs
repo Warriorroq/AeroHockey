@@ -13,12 +13,12 @@ namespace Project.Game
         public Game() : base("Aero hokey")
         {
             random = new Random(DateTime.UtcNow.Second + DateTime.UtcNow.Minute * 60);
-            currentScene = new Scene();
+            currentScene = new Scene(3);
         }
         public override void Init()
         {
             currentScene.Init();
-            CreateHokey();
+            //CreateHokey();
             //CreateDrawer();
         }
         public override void LoadContent()

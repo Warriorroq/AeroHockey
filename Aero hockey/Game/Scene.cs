@@ -13,6 +13,10 @@ namespace Project.Game
 
         private List<GameObject> _objects;
         private List<GameObject> _objectsForDestroy;
+        public Scene(int maxLayer)
+        {
+            this.maxLayer = maxLayer;
+        }
         public void Init()
         {
             _renderComponents = new();

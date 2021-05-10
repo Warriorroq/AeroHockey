@@ -4,11 +4,11 @@ using System;
 
 namespace Project.Game.AeroHokey
 {
-    public class GravityParticlesCollideComponent : Component
+    public class ComponentGravityParticlesCollide : Component
     {
         private Scene _scene;
         private int _particles;
-        public GravityParticlesCollideComponent(GameObject parent, Scene scene, int particles) : base(parent)
+        public ComponentGravityParticlesCollide(GameObject parent, Scene scene, int particles) : base(parent)
         {
             _scene = scene;
             _particles = particles;

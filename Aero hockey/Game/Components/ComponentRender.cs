@@ -2,11 +2,11 @@
 
 namespace Project.Game
 {
-    public class RenderComponent : Component
+    public class ComponentRender : Component
     {
         public Shape shape;
         public int layer;
-        public RenderComponent(GameObject parent ,Shape shape, Scene scene) : base(parent)
+        public ComponentRender(GameObject parent ,Shape shape, Scene scene) : base(parent)
         {
             this.shape = shape;
         }

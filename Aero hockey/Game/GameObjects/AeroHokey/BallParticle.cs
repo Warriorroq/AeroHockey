@@ -1,7 +1,6 @@
 ﻿using SFML.Graphics;
 using SFML.System;
-using System;
-namespace Project.Game
+namespace Project.Game.AeroHokey
 {
     public class BallParticle : GameObject
     {

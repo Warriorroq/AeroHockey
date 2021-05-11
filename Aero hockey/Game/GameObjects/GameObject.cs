@@ -68,5 +68,6 @@ namespace Project.Game
         }
         protected virtual void OnDestroy(){}
         protected virtual void OnUpdate(){}
+
     }
 }

@@ -6,7 +6,7 @@ namespace Project
 {
     public abstract class GameLoop
     {
-        public const int FPS = 160;
+        public const int FPS = 145;
         public const float updateTime = 1f / FPS;
         public Timer gameTime;
         protected GameLoop(string nameOfTheWindow)
